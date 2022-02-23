@@ -6,6 +6,7 @@
   &.disabled,
   &:disabled {
     cursor: not-allowed;
+    padding-block: inherit;
   }
 
   // Flat buttons
@@ -14,6 +15,7 @@
     border-width: 1px;
     box-shadow: none;
   }
+
 
   // input file btn
   &.btn-file {
