@@ -8,9 +8,11 @@ CREATE TABLE `clientes` (
   `clientes_nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `clientes_telefono` bigint NOT NULL,
   `clientes_direccion` text COLLATE utf8_spanish_ci NOT NULL,
+  `clientes_fecha_nac` date,
   `clientes_atencion` text COLLATE utf8_spanish_ci NOT NULL,
   `clientes_descripcion` text COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
 
 --
 -- Indices de la tabla `clientes`

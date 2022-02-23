@@ -7,12 +7,14 @@ CREATE TABLE `enfermeras` (
   `enfermeras_id` int NOT NULL,
   `enfermeras_nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `enfermeras_telefono` bigint NOT NULL,
+  `enfermeras_curp` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `enfermeras_rfc` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `enfermeras_disponibilidad` text COLLATE utf8_spanish_ci NOT NULL,
   `enfermeras_nacimiento` date COLLATE utf8_spanish_ci NOT NULL,
   `enfermeras_general` text COLLATE utf8_spanish_ci NOT NULL,
   `nombre_imagen` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `tipo_imagen` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `enfermeras_tipo` text COLLATE utf8_spanish_ci NOT NULL
+  `enfermeras_tipo` varchar(100) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
