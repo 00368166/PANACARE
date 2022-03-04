@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//use App\Http\Controllers\Personas\EnfermerasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,19 @@ Route::get('/home', function () {
 });
 
 
+Route::get('/enfermeras', function () {
+    return view('mensajes.mensajes');
+});
+
+
 Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('enfermeras', [HomeController::class,'index'] ) ->name('enfermeras.index');
+//Route::resource('enfermeras', App\Http\Controllers\Personas\EnfermerasController::class)->names('enfermeras');
+
+//Route::get('/enfermeras', [EnfermerasController::class, 'index'])->name('enfermeras.index');
+//Route::get('enfermeras', [App\Http\Controllers\Personas\EnfermerasController::class, 'index'])->name('home');
+//Route::get('enfermeras', function () {
+//    return view('enfermeras.index');
+//});
