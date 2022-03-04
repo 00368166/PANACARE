@@ -7,7 +7,8 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <p>Welcome to this beautifuasdasdl admin panel.</p>
+    <button class="btn btn-lg"> Holas</button>
 @stop
 
 @section('css')
