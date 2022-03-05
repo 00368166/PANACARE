@@ -253,8 +253,9 @@ return [
         ],
         [
             'text' => 'Enfermeras',
-            'icon'        => 'fas fa-fw fa-nurse',
-            'url'  => 'enfermeras',
+            'icon'        => 'fas fa-fw fa-user-md',
+            'route'  => 'enfermeras.servicios.index',
+            //'route' =>'enfermeras',
         ],
         [
             'text'        => 'pages',

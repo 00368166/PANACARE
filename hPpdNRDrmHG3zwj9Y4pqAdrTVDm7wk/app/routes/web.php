@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Personas\EnfermerasController;
 //use App\Http\Controllers\Personas\EnfermerasController;
 
 /*
@@ -27,10 +28,12 @@ Route::get('/home', function () {
 });
 
 
-Route::get('/enfermeras', function () {
+Route::get('/mensajes', function () {
     return view('mensajes.mensajes');
 });
 
+
+Route::resource('enfermeras/servicios',EnfermerasController::class)->names('enfermeras.servicios');
 
 Auth::routes();
 

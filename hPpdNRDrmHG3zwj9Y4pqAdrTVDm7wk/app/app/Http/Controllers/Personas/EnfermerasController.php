@@ -15,7 +15,7 @@ class EnfermerasController extends Controller
      */
     public function index() //leer todos los registros
     {
-        return view('enfermeras');
+        return view('enfermeras.index');
     }
 
     /**
