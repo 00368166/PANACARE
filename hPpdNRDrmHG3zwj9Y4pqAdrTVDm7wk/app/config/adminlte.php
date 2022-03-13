@@ -252,84 +252,129 @@ return [
             'url'  => 'mensajes',
         ],
         [
-            'text' => 'Enfermeras',
-            'icon'        => 'fas fa-fw fa-user-md',
-            'route'  => 'enfermeras.servicios.index',
-            //'route' =>'enfermeras',
+            'text'    => 'Enfermeras',
+            'icon'    => 'fas fa-fw fa-user-nurse',
+            'submenu' => [
+                [
+                    'text' => 'Personal',
+                    'icon'    => 'fas fa-fw fa-user-nurse',
+                    'route'  => 'enfermeras.servicios.index',
+                ],
+                [
+                    'text' => 'Agregar Personal',
+                    'icon'    => 'fas fa-fw fa-stethoscope',
+                    'route'  => 'enfermeras.servicios.create',
+                ],
+            ],
         ],
+
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text' => 'Servicios disponibles',
+            'icon'        => 'fas fa-fw fa-envelope',
+            'url'  => 'mensajes',
         ],
+
+        [
+            'text'    => 'Historial de servicios',
+            'icon'    => 'fas fa-fw fa-box',
+            'submenu' => [
+                [
+                    'text' => 'Inventarios consumibles',
+                    'icon'    => 'fas fa-fw fa-coins',
+                    'route'  => 'inventarios.consumibles.index',
+                ],
+                [
+                    'text' => 'Inventarios rentas',
+                    'icon'    => 'fas fa-fw fa-dolly',
+                    'route'  => 'enfermeras.servicios.create',
+                ],
+            ],
+        ],
+
+        [
+            'text' => 'Calculadora de distancia',
+            'icon'        => 'fas fa-fw fa-envelope',
+            'url'  => 'mensajes',
+        ],
+
+        [
+            'text'    => 'Calendario',
+            'icon'    => 'fas fa-fw fa-box',
+            'submenu' => [
+                [
+                    'text' => 'Inventarios consumibles',
+                    'icon'    => 'fas fa-fw fa-coins',
+                    'route'  => 'inventarios.consumibles.index',
+                ],
+                [
+                    'text' => 'Inventarios rentas',
+                    'icon'    => 'fas fa-fw fa-dolly',
+                    'route'  => 'enfermeras.servicios.create',
+                ],
+            ],
+        ],
+        
+        [
+            'text'    => 'Iventarios',
+            'icon'    => 'fas fa-fw fa-box',
+            'submenu' => [
+                [
+                    'text' => 'Inventarios consumibles',
+                    'icon'    => 'fas fa-fw fa-coins',
+                    'route'  => 'inventarios.consumibles.index',
+                ],
+                [
+                    'text' => 'Inventarios rentas',
+                    'icon'    => 'fas fa-fw fa-dolly',
+                    'route'  => 'enfermeras.servicios.create',
+                ],
+            ],
+        ],
+
+        [
+            'text' => 'Proveedores',
+            'icon'        => 'fas fa-fw fa-envelope',
+            'url'  => 'mensajes',
+        ],
+
+        [
+            'text'    => 'Reportes',
+            'icon'    => 'fas fa-fw fa-box',
+            'submenu' => [
+                [
+                    'text' => 'Inventarios consumibles',
+                    'icon'    => 'fas fa-fw fa-coins',
+                    'route'  => 'inventarios.consumibles.index',
+                ],
+                [
+                    'text' => 'Inventarios rentas',
+                    'icon'    => 'fas fa-fw fa-dolly',
+                    'route'  => 'enfermeras.servicios.create',
+                ],
+            ],
+        ],
+
+        
+        [
+            'text' => 'Base de datos',
+            'icon'        => 'fas fa-fw fa-envelope',
+            'url'  => 'mensajes',
+        ],
+        
         ['header' => 'Configuración de Cuenta'],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
-       
+        ['header' => 'Configuración de Empresa'],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
+            'text'       => 'Información',
             'icon_color' => 'cyan',
             'url'        => '#',
         ],
+
+      
     ],
 
     /*
@@ -484,5 +529,5 @@ return [
     |
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];

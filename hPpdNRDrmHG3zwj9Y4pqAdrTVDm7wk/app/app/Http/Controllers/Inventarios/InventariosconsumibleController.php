@@ -1,21 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Personas;
+namespace App\Http\Controllers\Inventarios;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Enfermeras;
 
-class EnfermerasController extends Controller
+class InventariosconsumibleController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() //leer todos los registros
+    public function index()
     {
-        return view('enfermeras.index');
+        //
     }
 
     /**
@@ -23,9 +22,9 @@ class EnfermerasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() //abrir formulario de nuevo registro
+    public function create()
     {
-        return view('enfermeras.agregar');
+        //
     }
 
     /**
@@ -34,7 +33,7 @@ class EnfermerasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) //guardar en la base de datos el nuevo registro
+    public function store(Request $request)
     {
         //
     }
@@ -45,7 +44,7 @@ class EnfermerasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Enfermeras $enfermeras)  //es para visualizar un solo registro a detalle
+    public function show($id)
     {
         //
     }
@@ -56,7 +55,7 @@ class EnfermerasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Enfermeras $enfermeras) //abrir un formulario para edición de un registro
+    public function edit($id)
     {
         //
     }
@@ -68,7 +67,7 @@ class EnfermerasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Enfermeras $enfermeras) //para actualizar la información del registro en la BD
+    public function update(Request $request, $id)
     {
         //
     }
@@ -79,12 +78,8 @@ class EnfermerasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Enfermeras $enfermeras) //para eliminar un registro
+    public function destroy($id)
     {
         //
-    }
-
-    public function enfermeras_image(){
-        return 'https://picsum.photos/300/300';
     }
 }

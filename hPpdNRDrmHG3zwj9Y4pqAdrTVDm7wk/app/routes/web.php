@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Personas\EnfermerasController;
+
+use App\Http\Controllers\Inventarios\InventariosconsumibleController;
 //use App\Http\Controllers\Personas\EnfermerasController;
 
 /*
@@ -15,27 +17,31 @@ use App\Http\Controllers\Personas\EnfermerasController;
 |
 */
 
+
 Route::get('/', function () {
     return view('auth.login');
 });
 
+
+Auth::routes();
+
 Route::get('/admin', function () {
     return view('admin.admin');
-});
+})->middleware('auth');
 
 Route::get('/home', function () {
     return view('admin.admin');
-});
+})->middleware('auth');
 
 
 Route::get('/mensajes', function () {
     return view('mensajes.mensajes');
-});
+})->middleware('auth');
 
 
-Route::resource('enfermeras/servicios',EnfermerasController::class)->names('enfermeras.servicios');
+Route::resource('enfermeras/servicios',EnfermerasController::class)->names('enfermeras.servicios')->middleware('auth');
+Route::resource('inventarios/consumibles',InventariosconsumibleController::class)->names('inventarios.consumibles')->middleware('auth');
 
-Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Route::get('enfermeras', [HomeController::class,'index'] ) ->name('enfermeras.index');

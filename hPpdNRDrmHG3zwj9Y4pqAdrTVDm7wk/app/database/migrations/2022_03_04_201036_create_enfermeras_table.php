@@ -15,7 +15,7 @@ class CreateEnfermerasTable extends Migration
     {
         Schema::create('enfermeras', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre',100);
+            $table->string('nombre',200);
             $table->bigInteger('telefono');
             $table->string('CURP',25);
             $table->string('RFC',25);
