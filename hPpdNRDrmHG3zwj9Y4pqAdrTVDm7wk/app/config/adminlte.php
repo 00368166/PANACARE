@@ -275,7 +275,24 @@ return [
         ],
 
         [
-            'text'    => 'Historial de servicios',
+            'text'    => 'Iventarios',
+            'icon'    => 'fas fa-fw fa-box',
+            'submenu' => [
+                [
+                    'text' => 'Inventarios consumibles',
+                    'icon'    => 'fas fa-fw fa-coins',
+                    'route'  => 'inventarios.consumibles.index',
+                ],
+                [
+                    'text' => 'Inventarios rentas',
+                    'icon'    => 'fas fa-fw fa-dolly',
+                    'route'  => 'enfermeras.servicios.create',
+                ],
+            ],
+        ],
+
+        [
+            'text'    => 'Estado de ordenes',
             'icon'    => 'fas fa-fw fa-box',
             'submenu' => [
                 [
@@ -299,23 +316,6 @@ return [
 
         [
             'text'    => 'Calendario',
-            'icon'    => 'fas fa-fw fa-box',
-            'submenu' => [
-                [
-                    'text' => 'Inventarios consumibles',
-                    'icon'    => 'fas fa-fw fa-coins',
-                    'route'  => 'inventarios.consumibles.index',
-                ],
-                [
-                    'text' => 'Inventarios rentas',
-                    'icon'    => 'fas fa-fw fa-dolly',
-                    'route'  => 'enfermeras.servicios.create',
-                ],
-            ],
-        ],
-        
-        [
-            'text'    => 'Iventarios',
             'icon'    => 'fas fa-fw fa-box',
             'submenu' => [
                 [
