@@ -87,4 +87,6 @@ class EnfermerasController extends Controller
     public function enfermeras_image(){
         return 'https://picsum.photos/300/300';
     }
+
+    
 }

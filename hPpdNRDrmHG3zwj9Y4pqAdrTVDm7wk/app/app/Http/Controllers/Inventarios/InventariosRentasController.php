@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Inventarios;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class InventariosconsumibleController extends Controller
+class InventariosRentasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class InventariosconsumibleController extends Controller
      */
     public function index()
     {
-        return view('inventarios.consumibles.index');
+        return view('inventarios.rentas.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class InventariosconsumibleController extends Controller
      */
     public function create()
     {
-        return view('inventarios.consumibles.agregar');
+        return view('inventarios.rentas.agregar');
     }
 
     /**

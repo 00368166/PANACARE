@@ -31,7 +31,7 @@ return [
     */
 
     'use_ico_only' => true,
-    'use_full_favicon' => false,
+    'use_full_favicon' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -87,7 +87,8 @@ return [
     'layout_boxed' => null,
     'layout_fixed_sidebar' => true,
     'layout_fixed_navbar' => true,
-    'layout_fixed_footer' => null,
+    'layout_fixed_footer' => true
+    ,
     'layout_dark_mode' => null,
 
     /*
@@ -147,7 +148,7 @@ return [
 
     'sidebar_mini' => 'lg',
     'sidebar_collapse' => false,
-    'sidebar_collapse_auto_size' => true,
+    'sidebar_collapse_auto_size' => false,
     'sidebar_collapse_remember' => false,
     'sidebar_collapse_remember_no_transition' => true,
     'sidebar_scrollbar_theme' => 'os-theme-light',
@@ -188,7 +189,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'admin',
+    'dashboard_url' => 'home',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -269,10 +270,23 @@ return [
         ],
 
         [
-            'text' => 'Servicios disponibles',
-            'icon'        => 'fas fa-fw fa-envelope',
-            'url'  => 'mensajes',
+            'text'    => 'Servicios',
+            'icon'    => 'fas fa-fw fa-folder-plus',
+            'submenu' => [
+                [
+                    'text' => 'Estadistica de Servicios',
+                    'icon'    => 'fas fa-fw fa-chart-pie',
+                    'route'  => 'servicios.enfermeras.index',
+                ],
+                [
+                    'text' => 'Gestionar Servicios',
+                    'icon'    => 'fas fa-fw fa-bullhorn',
+                    'route'  => 'servicios.enfermeras.create',
+                ],
+                
+            ],
         ],
+
 
         [
             'text'    => 'Iventarios',
@@ -284,34 +298,52 @@ return [
                     'route'  => 'inventarios.consumibles.index',
                 ],
                 [
-                    'text' => 'Inventarios rentas',
+                    'text' => 'Inventarios Rentas',
                     'icon'    => 'fas fa-fw fa-dolly',
-                    'route'  => 'enfermeras.servicios.create',
+                    'route'  => 'inventarios.rentas.index',
                 ],
             ],
         ],
 
         [
             'text'    => 'Estado de ordenes',
-            'icon'    => 'fas fa-fw fa-box',
+            'icon'    => 'fas fa-fw fa-briefcase',
             'submenu' => [
                 [
-                    'text' => 'Inventarios consumibles',
+                    'text' => 'Ordenes de Servicio',
                     'icon'    => 'fas fa-fw fa-coins',
                     'route'  => 'inventarios.consumibles.index',
+                    'submenu' => [
+                        [
+                            'text' => 'Activos',
+                            'icon'    => 'fas fa-fw fa-coins',
+                            'route'  => 'inventarios.consumibles.index',
+                        ],
+                        [
+                            'text' => 'Terminados/Cancelados',
+                            'icon'    => 'fas fa-fw fa-coins',
+                            'route'  => 'inventarios.consumibles.index',
+                        ],
+                    ],
                 ],
                 [
-                    'text' => 'Inventarios rentas',
+                    'text' => 'Equipo en Renta',
                     'icon'    => 'fas fa-fw fa-dolly',
                     'route'  => 'enfermeras.servicios.create',
+                    'submenu' => [
+                        [
+                            'text' => 'Rentas Activas',
+                            'icon'    => 'fas fa-fw fa-dolly',
+                            'route'  => 'enfermeras.servicios.create',
+                        ],
+                        [
+                            'text' => 'Rentas Finalizadas',
+                            'icon'    => 'fas fa-fw fa-dolly',
+                            'route'  => 'enfermeras.servicios.create',
+                        ],
+                    ],
                 ],
             ],
-        ],
-
-        [
-            'text' => 'Calculadora de distancia',
-            'icon'        => 'fas fa-fw fa-envelope',
-            'url'  => 'mensajes',
         ],
 
         [
@@ -479,6 +511,22 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+                ],
+            ],
+        ],
+
+        'leaflet' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => '~leaflet/dist/leaflet.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'leaflet/dist/leaflet.js',
                 ],
             ],
         ],

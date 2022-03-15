@@ -25,9 +25,6 @@
                             <li class="small"><span class="fa-li"><i class="fas fa-lg fa-user-nurse"></i></span> Edad: $Edad</li>
                             </ul>
                 </div>
-                <div class="col-5 text-center">
-                    <img src="<?php echo app\Http\Controllers\Personas\EnfermerasController::enfermeras_image();?>" alt="user-avatar" class="img-circle img-fluid">
-                </div>
             </div>
         </div>
         <div class="card-footer">

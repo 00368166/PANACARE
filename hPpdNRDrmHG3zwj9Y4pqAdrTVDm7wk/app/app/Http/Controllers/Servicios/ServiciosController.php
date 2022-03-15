@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Inventarios;
+namespace App\Http\Controllers\Servicios;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class InventariosconsumibleController extends Controller
+class ServiciosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class InventariosconsumibleController extends Controller
      */
     public function index()
     {
-        return view('inventarios.consumibles.index');
+        return view('servicios.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class InventariosconsumibleController extends Controller
      */
     public function create()
     {
-        return view('inventarios.consumibles.agregar');
+        return view('servicios.agregar');
     }
 
     /**
@@ -82,4 +82,9 @@ class InventariosconsumibleController extends Controller
     {
         //
     }
+
+    public function servicios_image(){
+        return 'https://picsum.photos/300/300';
+    }
 }
+

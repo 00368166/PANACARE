@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Personas\EnfermerasController;
 
 use App\Http\Controllers\Inventarios\InventariosconsumibleController;
+
+use App\Http\Controllers\Inventarios\InventariosRentasController;
+
+use App\Http\Controllers\Servicios\ServiciosController;
 //use App\Http\Controllers\Personas\EnfermerasController;
 
 /*
@@ -39,8 +43,10 @@ Route::get('/mensajes', function () {
 })->middleware('auth');
 
 
-Route::resource('enfermeras/servicios',EnfermerasController::class)->names('enfermeras.servicios')->middleware('auth');
+Route::resource('enfermeras',EnfermerasController::class)->names('enfermeras.servicios')->middleware('auth');
 Route::resource('inventarios/consumibles',InventariosconsumibleController::class)->names('inventarios.consumibles')->middleware('auth');
+Route::resource('inventarios/rentas',InventariosRentasController::class)->names('inventarios.rentas')->middleware('auth');
+Route::resource('servicios/enfermeras',ServiciosController::class)->names('servicios.enfermeras')->middleware('auth');
 
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
