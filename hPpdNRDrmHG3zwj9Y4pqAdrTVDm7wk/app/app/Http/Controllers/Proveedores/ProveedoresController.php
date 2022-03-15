@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Servicios;
+namespace App\Http\Controllers\Proveedores;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ServiciosController extends Controller
+class ProveedoresController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ServiciosController extends Controller
      */
     public function index()
     {
-        return view('servicios.index');
+        return view('proveedores.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class ServiciosController extends Controller
      */
     public function create()
     {
-        return view('servicios.agregar');
+        return view('proveedores.agregar');
     }
 
     /**
@@ -82,14 +82,7 @@ class ServiciosController extends Controller
     {
         //
     }
-
-    public function stats()
-    {
-        return view('servicios.servicios');
-    }
-
     public function servicios_image(){
         return 'https://picsum.photos/300/300';
     }
 }
-

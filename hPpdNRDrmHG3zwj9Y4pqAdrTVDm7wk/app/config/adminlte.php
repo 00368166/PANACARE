@@ -69,7 +69,7 @@ return [
     'usermenu_header_class' => 'bg-danger',
     'usermenu_image' => true,
     'usermenu_desc' => true,
-    'usermenu_profile_url' => true,
+    'usermenu_profile_url' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -281,7 +281,7 @@ return [
                 [
                     'text' => 'Gestionar Servicios',
                     'icon'    => 'fas fa-fw fa-bullhorn',
-                    'route'  => 'servicios.enfermeras.create',
+                    'route'  => 'servicios.enfermeras.stats',
                 ],
                 
             ],
@@ -311,35 +311,33 @@ return [
             'submenu' => [
                 [
                     'text' => 'Ordenes de Servicio',
-                    'icon'    => 'fas fa-fw fa-coins',
-                    'route'  => 'inventarios.consumibles.index',
+                    'icon'    => 'fas fa-fw fa-hospital-user',
                     'submenu' => [
                         [
                             'text' => 'Activos',
-                            'icon'    => 'fas fa-fw fa-coins',
-                            'route'  => 'inventarios.consumibles.index',
+                            'icon'    => 'fas fa-fw fa-play',
+                            'route'  => 'states.enfermeras.on',
                         ],
                         [
                             'text' => 'Terminados/Cancelados',
-                            'icon'    => 'fas fa-fw fa-coins',
-                            'route'  => 'inventarios.consumibles.index',
+                            'icon'    => 'fas fa-fw fa-stop',
+                            'route'  => 'states.enfermeras.off',
                         ],
                     ],
                 ],
                 [
                     'text' => 'Equipo en Renta',
                     'icon'    => 'fas fa-fw fa-dolly',
-                    'route'  => 'enfermeras.servicios.create',
                     'submenu' => [
                         [
                             'text' => 'Rentas Activas',
-                            'icon'    => 'fas fa-fw fa-dolly',
-                            'route'  => 'enfermeras.servicios.create',
+                            'icon'    => 'fas fa-fw fa-forward',
+                            'route'  => 'states.rentas.on',
                         ],
                         [
                             'text' => 'Rentas Finalizadas',
-                            'icon'    => 'fas fa-fw fa-dolly',
-                            'route'  => 'enfermeras.servicios.create',
+                            'icon'    => 'fas fa-fw fa-grip-lines',
+                            'route'  => 'states.rentas.off',
                         ],
                     ],
                 ],
@@ -348,17 +346,17 @@ return [
 
         [
             'text'    => 'Calendario',
-            'icon'    => 'fas fa-fw fa-box',
+            'icon'    => 'fas fa-fw fa-calendar-day',
             'submenu' => [
                 [
-                    'text' => 'Inventarios consumibles',
-                    'icon'    => 'fas fa-fw fa-coins',
-                    'route'  => 'inventarios.consumibles.index',
+                    'text' => 'Enfermeras',
+                    'icon'    => 'fas fa-fw fa-user-nurse',
+                    'route'  => 'calendar.personal',
                 ],
                 [
-                    'text' => 'Inventarios rentas',
+                    'text' => 'Equipos',
                     'icon'    => 'fas fa-fw fa-dolly',
-                    'route'  => 'enfermeras.servicios.create',
+                    'route'  => 'calendar.rent',
                 ],
             ],
         ],
@@ -366,7 +364,7 @@ return [
         [
             'text' => 'Proveedores',
             'icon'        => 'fas fa-fw fa-envelope',
-            'url'  => 'mensajes',
+            'route'  => 'proveedores.index',
         ],
 
         [
@@ -374,14 +372,14 @@ return [
             'icon'    => 'fas fa-fw fa-box',
             'submenu' => [
                 [
-                    'text' => 'Inventarios consumibles',
+                    'text' => 'Reportes A',
                     'icon'    => 'fas fa-fw fa-coins',
-                    'route'  => 'inventarios.consumibles.index',
+                    'url'  => '#',
                 ],
                 [
-                    'text' => 'Inventarios rentas',
+                    'text' => 'Reportes B',
                     'icon'    => 'fas fa-fw fa-dolly',
-                    'route'  => 'enfermeras.servicios.create',
+                    'url'  => '#',
                 ],
             ],
         ],
@@ -389,14 +387,14 @@ return [
         
         [
             'text' => 'Base de datos',
-            'icon'        => 'fas fa-fw fa-envelope',
-            'url'  => 'mensajes',
+            'icon'        => 'fas fa-fw fa-database',
+            'url'  => '#',
         ],
         
         ['header' => 'Configuración de Cuenta'],
         [
             'text' => 'profile',
-            'url'  => 'admin/settings',
+            'url'  => '#',
             'icon' => 'fas fa-fw fa-user',
         ],
         ['header' => 'Configuración de Empresa'],
@@ -445,21 +443,21 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
                 ],
             ],
@@ -480,21 +478,21 @@ return [
             ],
         ],
         'Chartjs' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
                 ],
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
                 ],
             ],
