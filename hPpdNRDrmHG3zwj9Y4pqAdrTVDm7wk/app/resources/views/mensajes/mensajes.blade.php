@@ -7,8 +7,11 @@
 @stop
 
 @section('content')
+<?php
 
-
+$mensajes = DB::table('message')->get();
+$telefono = 'a';
+?>
 <div class="container-fluid">
 
 <div class="row">
@@ -16,25 +19,27 @@
 
 <div class="timeline">
 
+@for ($i = 0; $i < $mensajes->count(); $i++)
+
 <div class="time-label">
-<span class="bg-red">10 Feb. 2022</span>
+<span class="bg-red"><?php echo $mensajes[$i]->date; ?></span>
 </div>
 
 
 <div>
 <i class="fas fa-envelope-open-text bg-blue"></i>
 <div class="timeline-item">
-<span class="time"><i class="fas fa-clock"></i> 12:05</span>
-<h3 class="timeline-header"><a href="#">What is Lorem Ipsum?</a> te envio un mensaje</h3>
+<span class="time"><i class="fas fa-clock"></i> <?php echo $mensajes[$i]->time; ?></span>
+<h3 class="timeline-header"><a href="#"><?php echo $mensajes[$i]->nombre; ?></a> te envio un mensaje</h3>
 <div class="timeline-body">
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+<?php echo $mensajes[$i]->text; ?>
 </div>
 <div class="timeline-footer">
 <a class="btn btn-danger btn-sm">
 <i class="fas fa-trash"> Eliminar</i>
 </a>
-<a class="btn bg-teal btn-sm">
-<i class="fas fa-phone"> Llamar</i>
+<a href="https://api.whatsapp.com/send?phone=521<?=$mensajes[$i]->telefono;?>&text=Hola%20*<?=$mensajes[$i]->nombre;?>*%20es%20un%20gusto%20saludarte%20nos%20ponemos%20en%20contacto%20contigo%20por%20que%20nos%20dejaste%20un%20mensaje%20en%20nuestra%20pagina%20web%2C%20por%20el%20motivo%20de%20*<?=$mensajes[$i]->text;?>*,%20con%20gusto%20te%20atenderemos%20😄%20recuerda%20que%20para%20nosotros%20*La%20salud%20en%20tu%20mirada%20es%20nuestra%20inspiración*" class="btn bg-teal btn-sm">
+<i class="fas fa-phone"> Whatsapp</i>
 </a>
 </div>
 </div>
@@ -42,32 +47,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 
 
-
-
-
-<div class="time-label">
-<span class="bg-red">3 Jan. 2020</span>
-</div>
-
-
-<div>
-<i class="fas fa-envelope-open-text bg-blue"></i>
-<div class="timeline-item">
-<span class="time"><i class="fas fa-clock"></i> 12:05</span>
-<h3 class="timeline-header"><a href="#">Why do we use it?</a> te envio un mensaje</h3>
-<div class="timeline-body">
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-</div>
-<div class="timeline-footer">
-<a class="btn btn-danger btn-sm">
-<i class="fas fa-trash"> Eliminar</i>
-</a>
-<a class="btn bg-teal btn-sm">
-<i class="fas fa-phone"> Llamar</i>
-</a>
-</div>
-</div>
-</div>
+@endfor
 
 <div>
 <i class="fas fa-clock bg-gray"></i>

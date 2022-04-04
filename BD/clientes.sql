@@ -24,5 +24,6 @@ ALTER TABLE `clientes`
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
+
 ALTER TABLE `clientes`
   MODIFY `clientes_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;

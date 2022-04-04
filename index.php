@@ -49,7 +49,7 @@ else{
         $mifecha = date('Y-m-d');
         $mitime = date('H:i:s');
 
-$query = mysqli_query($conexion, "SELECT * FROM message where message_telefono = '$telefono'");
+$query = mysqli_query($conexion, "SELECT * FROM message where telefono = '$telefono'");
         $result = mysqli_fetch_array($query);
         if ($result > 0) {
           $alert = '<div class="alert alert-warning alert-dismissible">
@@ -58,7 +58,7 @@ $query = mysqli_query($conexion, "SELECT * FROM message where message_telefono =
             Ya hemos recibido su mensaje previamente.
           </div>';
         } else {
-            $query_insert = mysqli_query($conexion, "INSERT INTO message(message_nombre,message_telefono, message_text, message_date, message_time) values ( '$nombre', '$telefono', '$mensaje', '$mifecha', '$mitime') ");
+            $query_insert = mysqli_query($conexion, "INSERT INTO message(nombre,telefono, text, date, time) values ( '$nombre', '$telefono', '$mensaje', '$mifecha', '$mitime') ");
             if ($query_insert) {
                 $alert = '<div class="alert alert-info alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

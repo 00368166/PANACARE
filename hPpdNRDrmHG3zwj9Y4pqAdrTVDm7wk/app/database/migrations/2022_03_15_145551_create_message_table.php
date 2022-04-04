@@ -15,7 +15,11 @@ class CreateMessageTable extends Migration
     {
         Schema::create('message', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('nombre',200);
+            $table->bigInteger('telefono');
+            $table->text('text');
+            $table->date('date');
+            $table->time('time');
         });
     }
 

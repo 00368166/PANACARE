@@ -3,7 +3,7 @@
     $host = "localhost:3308";
     $user = "root";
     $clave = "";
-    $bd = "panacea_1";
+    $bd = "panacare";
 
     $conexion = mysqli_connect($host,$user,$clave,$bd);
     if (mysqli_connect_errno()){
