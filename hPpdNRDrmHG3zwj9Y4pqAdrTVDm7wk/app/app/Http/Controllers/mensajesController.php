@@ -1,17 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Inventarios;
-
-
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\_inventariosrentas;
-use Illuminate\Support\Facades\Input;
+namespace App\Http\Controllers;
 use DB;
 use Redirect;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 
-class InventariosRentasController extends Controller
+class mensajesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +14,7 @@ class InventariosRentasController extends Controller
      */
     public function index()
     {
-        return view('inventarios.rentas.index');
+        return view('mensajes.mensajes');
     }
 
     /**
@@ -30,7 +24,9 @@ class InventariosRentasController extends Controller
      */
     public function create()
     {
-        return view('inventarios.rentas.agregar');
+        //
+        //$test = DB::table('message')->get();
+        //return $test;
     }
 
     /**
@@ -85,7 +81,9 @@ class InventariosRentasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {   
+        DB::delete('delete from message where id = ?',[$id]);
+        return redirect()->route('mensajes.index')->withSuccess('toastr.success("s");');
+        
     }
 }

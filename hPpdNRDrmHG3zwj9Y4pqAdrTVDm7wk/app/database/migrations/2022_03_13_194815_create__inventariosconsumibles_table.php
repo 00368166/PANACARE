@@ -14,7 +14,21 @@ class CreateInventariosconsumiblesTable extends Migration
     public function up()
     {
         Schema::create('_inventariosconsumibles', function (Blueprint $table) {
-            $table->id();
+            
+            $table->string('cod_barras',200)->primary();
+            $table->string('nombre',100);
+            $table->text('descripcion');
+            $table->integer('percio');
+            $table->integer('cantidad');
+            $table->integer('proveedor_id');
+            $table->string('tipo_consumible',100);
+            $table->date('caducidad');
+            
+            $table->string('lote',100);
+            
+            $table->string('imagen',255);
+            
+            $table->string('tipo_foto',255);
             $table->timestamps();
         });
     }

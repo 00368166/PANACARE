@@ -13,6 +13,8 @@ use App\Http\Controllers\Proveedores\ProveedoresController;
 
 use App\Http\Controllers\StatesController;
 
+use App\Http\Controllers\mensajesController;
+
 
 use App\Http\Controllers\CalendarController;
 //use App\Http\Controllers\Personas\EnfermerasController;
@@ -45,12 +47,16 @@ Route::get('/home', function () {
 })->middleware('auth');
 
 
-Route::get('/mensajes', function () {
-    return view('mensajes.mensajes');
-})->middleware('auth');
+Route::get('deletemensaje/{id}','App\Http\Controllers\mensajesController@destroy');
+
+Route::get('inventarios/consumibles/create','App\Http\Controllers\Inventarios\InventariosconsumibleController@create');
+Route::get('inventarios/deleteconsumible/{id}','App\Http\Controllers\Inventarios\InventariosconsumibleController@destroy');
+Route::get('inventarios/editconsumible/{id}','App\Http\Controllers\Inventarios\InventariosconsumibleController@edit');
+
+Route::get('inventarios/consumibles/{id}','App\Http\Controllers\Inventarios\InventariosconsumibleController@update');
 
 
-
+Route::resource('mensajes',mensajesController::class)->names('mensajes')->middleware('auth');
 
 Route::resource('enfermeras',EnfermerasController::class)->names('enfermeras.servicios')->middleware('auth');
 Route::resource('inventarios/consumibles',InventariosconsumibleController::class)->names('inventarios.consumibles')->middleware('auth');

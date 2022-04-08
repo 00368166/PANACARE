@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Inventarios;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\_inventariosconsumibles;
+use Illuminate\Support\Facades\Input;
+use DB;
+use Redirect;
+use Illuminate\Database\Eloquent\Collection;
 
 class InventariosconsumibleController extends Controller
 {
@@ -13,8 +18,9 @@ class InventariosconsumibleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('inventarios.consumibles.index');
+    {   
+        $consumibles= _inventariosconsumibles::all();
+        return view('inventarios.consumibles.index',compact('consumibles'));
     }
 
     /**
@@ -35,7 +41,22 @@ class InventariosconsumibleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $producto = new _inventariosconsumibles;
+    $producto->cod_barras  = $request->get('codigo');
+    $producto->nombre     = $request->get('nombre');
+    $producto->descripcion = $request->get('descripcion');
+    $producto->percio  = $request->get('precio');
+    $producto->cantidad  = $request->get('cantidad');
+    $producto->proveedor_id  = $request->get('proveedor');
+    $producto->tipo_consumible  = $request->get('tipo');
+    $producto->caducidad  = $request->get('caducidad');
+    $producto->imagen   ='';
+    $producto->tipo_foto   ='';
+    
+    $producto->lote  = $request->get('lote');
+
+    $producto->save();
+    return redirect()->route('inventarios.consumibles.index')->withSuccess('toastr.success("s");');
     }
 
     /**
@@ -55,9 +76,10 @@ class InventariosconsumibleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($cod)
+    {   
+        $editable = _inventariosconsumibles::where('cod_barras', $cod)->get()->first();
+        return view('inventarios.consumibles.editar',compact('editable'));
     }
 
     /**
@@ -67,9 +89,17 @@ class InventariosconsumibleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $num)
+    {   _inventariosconsumibles::where('cod_barras', $num)->update($request->all());
+       // return $temp->all();
+//        $temp->update($request->all());
+ //       $num->save();
+        return redirect()->route('inventarios.consumibles.index')->withSuccess('toastr.success("s");');
+
+
+//return $producto->all();
+    $producto->save();
+        return redirect()->route('inventarios.consumibles.index')->withSuccess('toastr.success("s");');
     }
 
     /**
@@ -80,6 +110,7 @@ class InventariosconsumibleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::delete('delete from _inventariosconsumibles where cod_barras = ?',[$id]);
+        return redirect()->route('inventarios.consumibles.index')->withSuccess('toastr.success("s");');
     }
 }

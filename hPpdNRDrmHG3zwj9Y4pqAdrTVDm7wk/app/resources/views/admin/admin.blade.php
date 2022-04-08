@@ -8,6 +8,11 @@
 
 @section('content')
 
+<?php
+
+$mensajes = DB::table('message')->count();
+?>
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3 col-6">
@@ -58,7 +63,7 @@
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>2</h3>
+                        <h3><?php echo $mensajes?></h3>
                         <p>Mensajes pendientes</p>
                     </div>
                     <div class="icon">

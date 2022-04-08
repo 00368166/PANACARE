@@ -1,17 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Inventarios;
+namespace App\Http\Controllers;
 
-
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\_inventariosrentas;
-use Illuminate\Support\Facades\Input;
-use DB;
-use Redirect;
-use Illuminate\Database\Eloquent\Collection;
 
-class InventariosRentasController extends Controller
+class testController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +13,7 @@ class InventariosRentasController extends Controller
      */
     public function index()
     {
-        return view('inventarios.rentas.index');
+        //
     }
 
     /**
@@ -30,7 +23,7 @@ class InventariosRentasController extends Controller
      */
     public function create()
     {
-        return view('inventarios.rentas.agregar');
+        //
     }
 
     /**
@@ -53,6 +46,7 @@ class InventariosRentasController extends Controller
     public function show($id)
     {
         //
+        
     }
 
     /**
