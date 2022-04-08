@@ -52,8 +52,17 @@
 </div>
 
 <div class="form-group">
+    <?php 
+    $prov = DB::table('proveedor')->get();
+    ?>
 <label for="exampleInputEmail1">Proveedor</label>
-<input type="text" class="form-control" name="proveedor" id="proveedor" placeholder="Ingresar cod. proveedor">
+
+<select class="form-control" name="proveedor">
+@for ($i = 0; $i < $prov->count(); $i++)
+                    <option value="{{$prov[$i]->id}}">{{$prov[$i]->nombre}}</option>
+@endfor
+                </select>
+
 </div>
 
 <div class="form-group">

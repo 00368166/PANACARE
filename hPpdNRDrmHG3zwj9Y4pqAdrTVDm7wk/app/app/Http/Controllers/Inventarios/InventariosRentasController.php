@@ -20,7 +20,8 @@ class InventariosRentasController extends Controller
      */
     public function index()
     {
-        return view('inventarios.rentas.index');
+        $rentas= _inventariosrentas::all();
+        return view('inventarios.rentas.index',compact('rentas'));
     }
 
     /**
@@ -41,7 +42,21 @@ class InventariosRentasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $producto = new _inventariosRentas;
+        $producto->cod_barras  = $request->get('codigo');
+        $producto->nombre     = $request->get('nombre');
+        $producto->descripcion = $request->get('descripcion');
+        $producto->percio  = $request->get('precio');
+        $producto->cantidad  = $request->get('cantidad');
+        $producto->proveedor_id  = $request->get('proveedor');
+        $producto->tipo_consumible  = $request->get('tipo');
+        $producto->imagen   ='';
+        $producto->tipo_foto   ='';
+        
+        $producto->lote  = $request->get('lote');
+    
+        $producto->save();
+        return redirect()->route('inventarios.rentas.index')->withSuccess('toastr.success("s");');
     }
 
     /**
@@ -63,7 +78,8 @@ class InventariosRentasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $editable = _inventariosRentas::where('cod_barras', $id)->get()->first();
+        return view('inventarios.rentas.editar',compact('editable'));
     }
 
     /**
@@ -75,7 +91,12 @@ class InventariosRentasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        _inventariosRentas::where('cod_barras', $id)->update($request->all());
+        // return $temp->all();
+ //        $temp->update($request->all());
+  //       $num->save();
+         return redirect()->route('inventarios.rentas.index')->withSuccess('toastr.success("s");');
+ 
     }
 
     /**
@@ -86,6 +107,8 @@ class InventariosRentasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        DB::delete('delete from _inventariosrentas where cod_barras = ?',[$id]);
+        return redirect()->route('inventarios.rentas.index')->withSuccess('toastr.success("s");');
     }
 }

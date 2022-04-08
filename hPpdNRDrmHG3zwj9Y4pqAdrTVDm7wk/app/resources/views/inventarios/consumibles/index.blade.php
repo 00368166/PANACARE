@@ -3,7 +3,7 @@
 @section('title', 'Personal lista')
 
 @section('content_header')
-    <h1>Personal</h1>
+    <h1>Consumibles</h1>
 @stop
 
 @section('content')
@@ -25,6 +25,8 @@
                 <th>Precio</th>
                 <th>Cantidad</th>
                 <th>Lote</th>
+                <th>Caducidad</th>
+                <th>Proveedor</th>
                 <th>Opciones</th>
             </tr>
         </thead>
@@ -37,6 +39,8 @@
                 <td>{{$producto->percio}}</td>
                 <td>{{$producto->cantidad}}</td>
                 <td>{{$producto->lote}}</td>
+                <td>{{$producto->caducidad}}</td>
+                <td>{{$producto->proveedor_id}}</td>
                 
                 <td> 
                 <div class="row">
@@ -65,6 +69,8 @@
                 <th>Precio</th>
                 <th>Cantidad</th>
                 <th>Lote</th>
+                <th>Caducidad</th>
+                <th>Proveedor</th>  
                 <th>Opciones</th>
             </tr>
         </tfoot>

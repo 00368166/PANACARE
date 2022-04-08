@@ -69,7 +69,7 @@ $mensajes = DB::table('message')->count();
                     <div class="icon">
                         <i class="ion ion-bag"><i class="fas fa-envelope"></i></i>
                     </div>
-                    <a href="#" class="small-box-footer">Mas información
+                    <a href="mensajes" class="small-box-footer">Mas información
                     <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>

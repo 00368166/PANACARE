@@ -55,6 +55,11 @@ Route::get('inventarios/editconsumible/{id}','App\Http\Controllers\Inventarios\I
 
 Route::get('inventarios/consumibles/{id}','App\Http\Controllers\Inventarios\InventariosconsumibleController@update');
 
+Route::get('inventarios/rentas/create','App\Http\Controllers\Inventarios\InventariosRentasController@create');
+Route::get('inventarios/deleterenta/{id}','App\Http\Controllers\Inventarios\InventariosRentasController@destroy');
+Route::get('inventarios/editrenta/{id}','App\Http\Controllers\Inventarios\InventariosRentasController@edit');
+
+Route::get('inventarios/rentas/{id}','App\Http\Controllers\Inventarios\InventariosRentasController@update');
 
 Route::resource('mensajes',mensajesController::class)->names('mensajes')->middleware('auth');
 

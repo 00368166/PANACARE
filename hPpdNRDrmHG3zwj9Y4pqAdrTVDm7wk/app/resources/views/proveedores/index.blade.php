@@ -55,7 +55,11 @@
 </div>
     </div>
     <div class="card-footer">
-<button class="btn btn-primary btn-lg"> Nuevo</button>
+    <a href ="{{route('inventarios.rentas.create')}}"  class="btn btn-block btn-primary btn-lg">
+
+<i class="fas fa-pen"> Crear nuevo</i>
+
+</a>
 </div>
   </div>
 
