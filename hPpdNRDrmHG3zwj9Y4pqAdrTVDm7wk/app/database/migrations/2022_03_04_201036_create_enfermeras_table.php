@@ -19,6 +19,8 @@ class CreateEnfermerasTable extends Migration
             $table->bigInteger('telefono');
             $table->string('CURP',25);
             $table->string('RFC',25);
+            
+            $table->string('direccion',200);
             $table->text('disponibilidad');
             $table->date('nacimiento');
             $table->text('general');

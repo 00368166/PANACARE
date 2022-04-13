@@ -61,6 +61,14 @@ Route::get('inventarios/editrenta/{id}','App\Http\Controllers\Inventarios\Invent
 
 Route::get('inventarios/rentas/{id}','App\Http\Controllers\Inventarios\InventariosRentasController@update');
 
+Route::get('inventarios/consumibles/{id}','App\Http\Controllers\Inventarios\InventariosconsumibleController@update');
+
+Route::get('proveedores/create','App\Http\Controllers\Proveedores\ProveedoresController@create');
+Route::get('deleteproveedores/{id}','App\Http\Controllers\Proveedores\ProveedoresController@destroy');
+Route::get('editproveedores/{id}','App\Http\Controllers\Proveedores\ProveedoresController@edit');
+
+Route::get('proveedores/{id}','App\Http\Controllers\Proveedores\ProveedoresController@update');
+
 Route::resource('mensajes',mensajesController::class)->names('mensajes')->middleware('auth');
 
 Route::resource('enfermeras',EnfermerasController::class)->names('enfermeras.servicios')->middleware('auth');

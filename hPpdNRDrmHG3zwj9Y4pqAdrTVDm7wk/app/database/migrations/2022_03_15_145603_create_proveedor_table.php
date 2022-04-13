@@ -19,6 +19,8 @@ class CreateProveedorTable extends Migration
             $table->string('nombre_empresa',100);
             $table->text('descripcion');
             $table->text('direccion');
+            
+            $table->bigInteger('telefono');
             $table->string('imagen',255);
             $table->string('tipo_foto',255);
             $table->timestamps();

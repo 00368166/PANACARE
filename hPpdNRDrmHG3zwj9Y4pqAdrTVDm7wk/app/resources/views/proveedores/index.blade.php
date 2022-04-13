@@ -3,7 +3,7 @@
 @section('title', 'Personal lista')
 
 @section('content_header')
-    <h1>Estadisticas de servicios</h1>
+    <h1>Proveedores</h1>
 @stop
 
 @section('content')
@@ -11,21 +11,21 @@
 <div class="card card-solid">
       <div class="card-body pb-0">
 <div class="row">
-@for ($i = 1; $i <=6; $i++)
+@foreach ($prov as $prov)
 <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
           <div class="card bg-light d-flex flex-fill">
             <div class="card-header text-muted border-bottom-0">
-                $Tipo de proveedor
+                {{$prov->nombre}}
             </div>
         <div class="card-body pt-0">
             <div class="row">
                 <div class="col-7">
-                        <h2 class="lead"><b>$Nombre del Proveedor</b></h2>
-                        <p class="text-muted text-sm"><b>Acerca de: </b> $Descripcion </p>
+                        <h2 class="lead"><b>{{$prov->nombre_empresa}}</b></h2>
+                        <p class="text-muted text-sm"><b>Acerca de: </b> {{$prov->descripcion}} </p>
                         
                             <ul class="ml-4 mb-0 fa-ul text-muted">
-                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Direccion: $direccion</li>
-                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Telefono: $telefono</li>
+                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Direccion: {{$prov->direccion}}</li>
+                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Telefono: {{$prov->telefono}}</li>
                             </ul>
                 </div>
                 <div class="col-5 text-center">
@@ -35,10 +35,10 @@
         </div>
         <div class="card-footer">
             <div class="text-right">
-                <a href="#" class="btn btn-sm bg-primary">
+                <a href="editproveedores/{{$prov->id}}" class="btn btn-sm bg-primary">
                     <i class="fas fa-pen"> Editar</i>
                 </a>
-                <a href="#" class="btn btn-sm bg-danger">
+                <a href="deleteproveedores/{{$prov->id}}" class="btn btn-sm bg-danger">
                     <i class="fas fa-trash"> Eliminar</i>
                 </a>
             </div>
@@ -49,13 +49,13 @@
 
 
 
-@endfor
+@endforeach
 
 
 </div>
     </div>
     <div class="card-footer">
-    <a href ="{{route('inventarios.rentas.create')}}"  class="btn btn-block btn-primary btn-lg">
+    <a href ="{{route('proveedores.create')}}"  class="btn btn-block btn-primary btn-lg">
 
 <i class="fas fa-pen"> Crear nuevo</i>
 

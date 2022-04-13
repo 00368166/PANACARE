@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Proveedores;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\proveedor;
+use Illuminate\Support\Facades\Input;
+use DB;
+use Redirect;
+use Illuminate\Database\Eloquent\Collection;
 
 class ProveedoresController extends Controller
 {
@@ -13,8 +18,9 @@ class ProveedoresController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('proveedores.index');
+    {   
+        $prov= proveedor::all();
+        return view('proveedores.index',compact('prov'));
     }
 
     /**
@@ -35,7 +41,17 @@ class ProveedoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $producto = new proveedor;
+    $producto->nombre     = $request->get('nombre');
+    $producto->nombre_empresa     = $request->get('nombre_empresa');
+    
+    $producto->direccion  = $request->get('direccion');
+    $producto->descripcion = $request->get('descripcion');
+    $producto->telefono  = $request->get('telefono');
+    $producto->imagen   ='';
+    $producto->tipo_foto   ='';
+    $producto->save();
+    return redirect()->route('proveedores.index')->withSuccess('toastr.success("s");');
     }
 
     /**
@@ -57,7 +73,8 @@ class ProveedoresController extends Controller
      */
     public function edit($id)
     {
-        //
+        $editable = proveedor::find($id);
+        return view('proveedores.editar',compact('editable'));
     }
 
     /**
@@ -69,7 +86,11 @@ class ProveedoresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        proveedor::where('id', $id)->update($request->all());
+       // return $temp->all();
+//        $temp->update($request->all());
+ //       $num->save();
+        return redirect()->route('proveedores.index')->withSuccess('toastr.success("s");');
     }
 
     /**
@@ -80,7 +101,8 @@ class ProveedoresController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::delete('delete from proveedor where id = ?',[$id]);
+        return redirect()->route('proveedores.index')->withSuccess('toastr.success("s");');
     }
     public function servicios_image(){
         return 'https://picsum.photos/300/300';

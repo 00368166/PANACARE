@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\Personas;
 
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 use App\Models\Enfermeras;
+use Illuminate\Support\Facades\Input;
+use DB;
+use Redirect;
+use Illuminate\Database\Eloquent\Collection;
 
 class EnfermerasController extends Controller
 {
@@ -15,7 +20,9 @@ class EnfermerasController extends Controller
      */
     public function index() //leer todos los registros
     {
-        return view('enfermeras.index');
+        
+        $enf= Enfermeras::all();
+        return view('enfermeras.index',compact('enf'));
     }
 
     /**

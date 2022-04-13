@@ -57,7 +57,7 @@
 
 <select class="form-control" name="proveedor_id">
 @for ($i = 0; $i < $prov->count(); $i++)
-<option value="{{$prov[$i]->id}}">{{$prov[$i]->nombre}}</option>
+<option value="{{$prov[$i]->id}}">{{$prov[$i]->nombre_empresa}}</option>
 @endfor
                 </select>
 </div>
