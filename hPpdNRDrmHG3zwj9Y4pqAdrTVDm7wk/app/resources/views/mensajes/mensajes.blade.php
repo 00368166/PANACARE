@@ -74,9 +74,9 @@ $telefono = 'a';
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
     
+    <link rel="stylesheet" href="{{asset('css/app.css')}}"> 
     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
 @stop
-
 @section('js')
     <script> console.log('Hi!'); </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

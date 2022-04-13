@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
-@charset "UTF-8";
-/*!
+/*@charset "UTF-8";
+/*
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
  * Copyright 2011-2021 Twitter, Inc.
@@ -4898,7 +4898,9 @@ textarea.form-control-lg {
 .badge:empty {
   display: none;
 }
-
+.badge-warning{
+  
+}
 .btn .badge {
   position: relative;
   top: -1px;
