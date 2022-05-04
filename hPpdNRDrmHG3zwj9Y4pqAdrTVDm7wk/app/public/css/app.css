@@ -3484,8 +3484,18 @@ textarea.form-control-lg {
 
 .btn-sm, .btn-group-sm > .btn {
   padding: 0.25rem 0.5rem;
+  min-width: 8em;
   font-size: 0.7875rem;
   border-radius: 0.2rem;
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+  margin-top: 0.5em;
+  display: inline-block;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+
 }
 
 .fade {
@@ -4002,6 +4012,7 @@ textarea.form-control-lg {
 .nav-fill .nav-item {
   flex: 1 1 auto;
   text-align: center;
+  
 }
 
 .nav-justified > .nav-link,
@@ -4009,11 +4020,13 @@ textarea.form-control-lg {
   flex-basis: 0;
   flex-grow: 1;
   text-align: center;
+  
 }
 
 .nav-fill .nav-item .nav-link,
 .nav-justified .nav-item .nav-link {
   width: 100%;
+  
 }
 
 .tab-content > .tab-pane {
@@ -4435,12 +4448,14 @@ textarea.form-control-lg {
 
 .navbar-light .navbar-brand {
   color: rgba(0, 0, 0, 0.9);
+  
 }
 .navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
   color: rgba(0, 0, 0, 0.9);
 }
 .navbar-light .navbar-nav .nav-link {
   color: rgba(0, 0, 0, 0.55);
+  top: auto;
 }
 .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
   color: rgba(0, 0, 0, 0.7);
@@ -4885,6 +4900,7 @@ textarea.form-control-lg {
 
 .badge {
   display: inline-block;
+  top: auto;
   padding: 0.35em 0.65em;
   font-size: 0.75em;
   font-weight: 700;
@@ -4899,7 +4915,9 @@ textarea.form-control-lg {
   display: none;
 }
 .badge-warning{
-  
+  background-color: red;
+  position: sticky;
+
 }
 .btn .badge {
   position: relative;

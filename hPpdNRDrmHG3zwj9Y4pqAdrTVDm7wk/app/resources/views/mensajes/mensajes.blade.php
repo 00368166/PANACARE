@@ -18,7 +18,7 @@ $telefono = 'a';
 
 <div class="timeline">
 
-@for ($i = 0; $i < $mensajes->count(); $i++)
+@for ($i = $mensajes->count()-1; $i >= 0; $i--)
 
 <div class="time-label">
 <span class="bg-red"><?php echo $mensajes[$i]->date; ?></span>

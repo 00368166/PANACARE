@@ -8,28 +8,45 @@
 @stop
 
 @section('content_top_nav_right')
+<?php
+
+$mensajes = DB::table('message')->count();
+$correos = 0;
+$pagos = 0;
+$count = 0 + $mensajes ;
+?>
     <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
+       
+        <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false" >
+          <i class="fas fa-bell"></i>
+          @if($count>0)
+          <span class="badge badge-warning navbar-badge"><?php echo $count?></span>
+          @endif
         </a>
+        
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <span class="dropdown-item dropdown-header"><?php echo $count?> Notificaciones</span>
+          @if($mensajes > 0)
+          <div class="dropdown-divider"></div>
+          <a href="mensajes" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> <?php echo $mensajes?> nuevos mensajes
+            <span class="float-right text-muted text-sm"></span>
+          </a>
+            @endif
+            @if($correos > 0)
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
+            <i class="fas fa-users mr-2"></i> <?php echo $correos?> correos pendientes
+            <span class="float-right text-muted text-sm"></span>
           </a>
+          @endif
+          @if($pagos > 0)
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
+            <i class="fas fa-file mr-2"></i> <?php echo $pagos?>pagos pendientes
+            <span class="float-right text-muted text-sm">Hoy</span>
           </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
+          @endif
         </div>
     </li>
 @endsection
