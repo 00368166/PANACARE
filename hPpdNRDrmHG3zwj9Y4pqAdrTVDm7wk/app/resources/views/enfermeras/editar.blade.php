@@ -4,7 +4,7 @@
 
 @section('content_header')
 
-    <h1>Agregar personal</h1>
+    <h1>Editar personal</h1>
 @stop
 
 @section('content')
@@ -16,42 +16,42 @@
 
 <div class="card card-primary">
 <div class="card-header">
-<h3 class="card-title">Agregar</h3>
+<h3 class="card-title">Editar {{$editable->nombre}}</h3>
 
 </div>
 
 
-<form action="{{route('enfermeras.servicios.store')}}" method="POST">
+<form action="{{route('enfermeras.servicios.update','$editable->id')}}" method="PATCH">
 <div class="card-body">
 <div class="form-group">
 <label for="exampleInputEmail1">Nombre</label>
-<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingresar nombre completo">
+<input type="text" class="form-control" name="nombre" id="nombre" value="{{$editable->nombre}}">
 </div>
 
 <div class="form-group">
 <label for="exampleInputEmail1">Tipo enfermera</label>
-<input type="text" class="form-control" name="tipo" id="tipo" placeholder="Ingresar especialidad">
+<input type="text" class="form-control" name="tipo_enfermera" id="tipo_enfermera" value="{{$editable->tipo_enfermera}}">
 </div>
 
 <div class="form-group">
 <label for="exampleInputPassword1">Telefono</label>
-<input type="tel" class="form-control" name="telefono" id="telefono" placeholder="Ej: 9511876322">
+<input type="tel" class="form-control" name="telefono" id="telefono" value="{{$editable->telefono}}">
 </div>
 
 
 <div class="form-group">
 <label for="exampleInputPassword1">Direccion</label>
-<textarea class="form-control" name="direccion" id="direccion" rows="3" placeholder="Enter ..."></textarea>
+<textarea class="form-control" name="direccion" id="direccion" rows="3">{{$editable->direccion}}</textarea>
 </div>
 
 <div class="form-group">
 <label for="exampleInputEmail1">CURP</label>
-<input type="text" class="form-control" name="curp" id="curp" placeholder="Ingresar CURP">
+<input type="text" class="form-control" name="curp" id="curp" value="{{$editable->CURP}}">
 </div>
 
 <div class="form-group">
 <label for="exampleInputEmail1">RFC</label>
-<input type="text" class="form-control" name="rfc" id="rfc" placeholder="Ingresar CURP">
+<input type="text" class="form-control" name="rfc" id="rfc" value="{{$editable->RFC}}">
 </div>
 
 <div class="form-group">
@@ -67,30 +67,29 @@
 
 <div class="form-group">
 <label for="exampleInputPassword1">Disponibilidad</label>
-<input type="text" class="form-control" name="disponibilidad" id="disponibilidad" placeholder="Dias y horarios disponibles para laborar">
+<input type="text" class="form-control" name="disponibilidad" id="disponibilidad" value="{{$editable->disponibilidad}}">
 </div>
 
 
 <div class="form-group">
 <label>Fecha de nacimiento</label>
-<div class="input-group">
-<div class="input-group-prepend">
+    <div class="input-group">
+    <div class="input-group-prepend">
 <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
 </div>
-<input type="date" name="nacimiento" id="nacimiento"  class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
+<input type="date" name="nacimiento" id="nacimiento"  class="form-control" data-inputmask-alias="datetime" value="{{$editable->nacimiento}}" data-inputmask-inputformat="yyyy-mm-dd" data-mask> 
 </div>
 <!-- /.input group -->
 </div>
 <div class="form-group">
 <label for="exampleInputPassword1">Descripción</label>
-<textarea class="form-control" name="descrip" id="descrip" rows="3" placeholder="Enter ..."></textarea>
+<textarea class="form-control" name="general" id="general" rows="3" placeholder="Enter ...">{{$editable->general}}</textarea>
 </div>
 </div>
 
 <div class="card-footer">
 <button type="submit" class="btn btn-primary">Submit</button>
 </div>
-@csrf
 </form>
 </div>
 </div>

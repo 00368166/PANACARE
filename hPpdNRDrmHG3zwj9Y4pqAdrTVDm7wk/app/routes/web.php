@@ -46,6 +46,7 @@ Route::get('/home', function () {
     return view('admin.admin');
 })->middleware('auth');
 
+Route::resource('mensajes',mensajesController::class)->names('mensajes')->middleware('auth');
 
 Route::get('deletemensaje/{id}','App\Http\Controllers\mensajesController@destroy');
 
@@ -69,7 +70,18 @@ Route::get('editproveedores/{id}','App\Http\Controllers\Proveedores\ProveedoresC
 
 Route::get('proveedores/{id}','App\Http\Controllers\Proveedores\ProveedoresController@update');
 
+
+
+
 Route::resource('mensajes',mensajesController::class)->names('mensajes')->middleware('auth');
+
+
+Route::get('enfermeras/create','App\Http\Controllers\Personas\EnfermerasController@create');
+Route::get('deleteenfermera/{id}','App\Http\Controllers\Personas\EnfermerasController@destroy');
+Route::get('editenfermeras/{id}','App\Http\Controllers\Personas\EnfermerasController@edit');
+
+Route::get('enfermeras/{id}','App\Http\Controllers\Personas\EnfermerasController@update');
+
 
 Route::resource('enfermeras',EnfermerasController::class)->names('enfermeras.servicios')->middleware('auth');
 Route::resource('inventarios/consumibles',InventariosconsumibleController::class)->names('inventarios.consumibles')->middleware('auth');

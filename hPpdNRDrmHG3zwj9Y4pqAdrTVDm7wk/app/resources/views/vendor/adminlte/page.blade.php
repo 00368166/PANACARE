@@ -28,7 +28,7 @@ $count = 0 + $mensajes ;
           <span class="dropdown-item dropdown-header"><?php echo $count?> Notificaciones</span>
           @if($mensajes > 0)
           <div class="dropdown-divider"></div>
-          <a href="mensajes" class="dropdown-item">
+          <a href="/mensajes" class="dropdown-item">
             <i class="fas fa-envelope mr-2"></i> <?php echo $mensajes?> nuevos mensajes
             <span class="float-right text-muted text-sm"></span>
           </a>

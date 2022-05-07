@@ -36,7 +36,7 @@
 
 <div class="form-group">
 <label for="exampleInputPassword1">Descripción</label>
-<textarea class="form-control" name="descripcion" id="descripcion" rows="3" placeholder="<?php echo $editable->descripcion?>"></textarea>
+<textarea class="form-control" name="descripcion" id="descripcion" rows="3" ><?php echo $editable->descripcion?></textarea>
 </div>
 
 <div class="form-group">

@@ -43,7 +43,21 @@ class EnfermerasController extends Controller
      */
     public function store(Request $request) //guardar en la base de datos el nuevo registro
     {
-        //
+        $producto = new Enfermeras;
+    $producto->nombre     = $request->get('nombre');
+    $producto->telefono     = $request->get('telefono');
+    $producto->imagen   ='';
+    $producto->tipo_imagen   ='';
+    
+    $producto->tipo_enfermera  = $request->get('tipo');
+    $producto->direccion  = $request->get('direccion');
+    $producto->CURP  = $request->get('curp');
+    $producto->RFC = $request->get('rfc');
+    $producto->disponibilidad  = $request->get('disponibilidad');
+    $producto->nacimiento   =$request->get('nacimiento');;
+    $producto->general   =$request->get('descrip');;
+    $producto->save();
+    return redirect()->route('enfermeras.servicios.index')->withSuccess('toastr.success("s");');
     }
 
     /**
@@ -63,20 +77,23 @@ class EnfermerasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Enfermeras $enfermeras) //abrir un formulario para edición de un registro
+    public function edit($id) //abrir un formulario para edición de un registro
     {
-        //
+        $editable = Enfermeras::find($id);
+        return view('enfermeras.editar',compact('editable'));
+
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in storage.s
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Enfermeras $enfermeras) //para actualizar la información del registro en la BD
+    public function update(Request $request, $id)
     {
+        Enfermeras::where('id', $id)->update($request->all());
         //
     }
 

@@ -39,7 +39,7 @@
 
 <div class="form-group">
 <label for="exampleInputPassword1">Descripción</label>
-<textarea class="form-control" name="descripcion" id="descripcion" rows="3" placeholder="Enter ..." value="{{$editable->nombre_empresa}}"></textarea>
+<textarea class="form-control" name="descripcion" id="descripcion" rows="3" placeholder="Enter ...">{{$editable->descripcion}}</textarea>
 </div>
 
 
