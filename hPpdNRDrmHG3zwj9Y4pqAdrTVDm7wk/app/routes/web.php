@@ -10,6 +10,7 @@ use App\Http\Controllers\Inventarios\InventariosRentasController;
 use App\Http\Controllers\Servicios\ServiciosController;
 
 use App\Http\Controllers\Proveedores\ProveedoresController;
+use App\Http\Controllers\clientesController;
 
 use App\Http\Controllers\StatesController;
 
@@ -84,6 +85,17 @@ Route::get('enfermeras/{id}','App\Http\Controllers\Personas\EnfermerasController
 
 
 Route::resource('enfermeras',EnfermerasController::class)->names('enfermeras.servicios')->middleware('auth');
+
+
+Route::get('clientes/create','App\Http\Controllers\clientesController@create');
+Route::get('deleteclientes/{id}','App\Http\Controllers\clientesController@destroy');
+Route::get('editeclientes/{id}','App\Http\Controllers\clientesController@edit');
+
+Route::get('clientes/{id}','App\Http\Controllers\clientesController@update');
+
+
+Route::resource('clientes',clientesController::class)->names('clientes')->middleware('auth');
+
 
 
 

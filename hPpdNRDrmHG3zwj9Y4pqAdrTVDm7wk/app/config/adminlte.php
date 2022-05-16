@@ -268,6 +268,11 @@ return [
                 ],
             ],
         ],
+        [
+            'text' => 'Clientes',
+            'icon' => 'fas fa-fw fa-user',
+            'route'  => 'clientes.index',
+        ],
 
         [
             'text'    => 'Servicios',

@@ -4,6 +4,12 @@ namespace App\Http\Controllers\Servicios;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Servicios;
+use Illuminate\Support\Facades\Input;
+use DB;
+use Redirect;
+use Illuminate\Database\Eloquent\Collection;
+
 
 class ServiciosController extends Controller
 {
@@ -14,7 +20,8 @@ class ServiciosController extends Controller
      */
     public function index()
     {
-        return view('servicios.index');
+        $editable= servicios::all();
+        return view('servicios.index',compact('editable'));
     }
 
     /**
@@ -35,7 +42,12 @@ class ServiciosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $producto = new servicios;
+    $producto->nombre     = $request->get('nombre');
+    $producto->descripcion = $request->get('descripcion');
+    $producto->precio  = $request->get('precio');
+    $producto->save();
+    return redirect()->route('listaservicios.index')->withSuccess('toastr.success("Servicio creado");');
     }
 
     /**
@@ -57,7 +69,8 @@ class ServiciosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $editable = servicios::where('id', $id)->get()->first();
+        return view('servicios.editar',compact('editable'));
     }
 
     /**
@@ -69,7 +82,11 @@ class ServiciosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        servicios::where('id', $id)->update($request->all());
+       // return $temp->all();
+//        $temp->update($request->all());
+ //       $num->save();
+        return redirect()->route('listaservicios.index')->withSuccess('toastr.success("s");');
     }
 
     /**
@@ -80,7 +97,8 @@ class ServiciosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::delete('delete from servicios where id = ?',[$id]);
+        return redirect()->route('listaservicios.index')->withSuccess('toastr.success("s");');
     }
 
     public function stats()

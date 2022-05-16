@@ -11,15 +11,33 @@
 <?php
 
 $mensajes = DB::table('message')->count();
+$enfermeras = DB::table('enfermeras')->count();
 ?>
 
     <div class="container-fluid">
         <div class="row">
+            
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-Warning">
+                    <div class="inner">
+                        <h3><?php echo $enfermeras?></h3>
+                        <p>Personal existente</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"><i class="fas fa-user"></i></i>
+                    </div>
+                    <a href="enfermeras" class="small-box-footer">Mas información
+                    <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+
+            </div>
+
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3>1</h3>
-                        <p>Personal Activo</p>
+                        <p>Servicios Activo</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-bag"><i class="fas fa-user-md"></i></i>
@@ -28,21 +46,6 @@ $mensajes = DB::table('message')->count();
                     <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
-            </div>
-            <div class="col-lg-3 col-6">
-                <div class="small-box bg-Warning">
-                    <div class="inner">
-                        <h3>1</h3>
-                        <p>Personal Disponible</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-bag"><i class="fas fa-user"></i></i>
-                    </div>
-                    <a href="#" class="small-box-footer">Mas información
-                    <i class="fas fa-arrow-circle-right"></i>
-                    </a>
-                </div>
-
             </div>
             
             <div class="col-lg-3 col-6">
