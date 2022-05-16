@@ -21,7 +21,7 @@
 </div>
 
 
-<form action="{{route('enfermeras.servicios.update','$editable->id')}}" method="PATCH">
+<form action="{{route('enfermeras.servicios.update',$editable->id)}}" method="PATCH">
 <div class="card-body">
 <div class="form-group">
 <label for="exampleInputEmail1">Nombre</label>

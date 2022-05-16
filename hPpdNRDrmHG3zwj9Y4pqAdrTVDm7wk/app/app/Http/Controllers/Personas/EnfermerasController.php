@@ -93,7 +93,9 @@ class EnfermerasController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //dd($request, $id);
         Enfermeras::where('id', $id)->update($request->all());
+        return redirect()->route('enfermeras.servicios.index')->withSuccess('toastr.success("s");');
         //
     }
 
@@ -103,9 +105,10 @@ class EnfermerasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Enfermeras $enfermeras) //para eliminar un registro
+    public function destroy($id) //para eliminar un registro
     {
-        //
+        DB::delete('delete from enfermeras where id = ?',[$id]);
+        return redirect()->route('enfermeras.servicios.index')->withSuccess('toastr.success("s");');
     }
 
     public function enfermeras_image(){

@@ -2,9 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class servicios extends Controller
+use Illuminate\Http\Request;
+use App\Models\servicios;
+use Illuminate\Support\Facades\Input;
+use DB;
+use Redirect;
+use Illuminate\Database\Eloquent\Collection;
+
+class serviciosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -12,8 +19,9 @@ class servicios extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        dd();
+        return view('enfermeras.agregar');
     }
 
     /**

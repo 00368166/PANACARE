@@ -276,12 +276,12 @@ return [
                 [
                     'text' => 'Estadistica de Servicios',
                     'icon'    => 'fas fa-fw fa-chart-pie',
-                    'route'  => 'servicios.enfermeras.index',
+                    'route'  => 'listaservicios.stats',
                 ],
                 [
                     'text' => 'Gestionar Servicios',
                     'icon'    => 'fas fa-fw fa-bullhorn',
-                    'route'  => 'servicios.enfermeras.stats',
+                    'route'  => 'listaservicios.index',
                 ],
                 
             ],

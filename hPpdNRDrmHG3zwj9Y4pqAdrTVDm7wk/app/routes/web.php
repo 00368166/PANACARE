@@ -84,11 +84,28 @@ Route::get('enfermeras/{id}','App\Http\Controllers\Personas\EnfermerasController
 
 
 Route::resource('enfermeras',EnfermerasController::class)->names('enfermeras.servicios')->middleware('auth');
+
+
+
+Route::get('listaservicios/create','App\Http\Controllers\servicios\serviciosController@create');
+Route::get('listaservicios/stats','App\Http\Controllers\servicios\serviciosController@stats');
+
+Route::get('listaservicios\stats',[serviciosController::class,'stats'])->name('listaservicios.stats')->middleware('auth');
+Route::get('deletelistaservicios/{id}','App\Http\Controllers\servicios\serviciosController@destroy');
+Route::get('editelistaservicios/{id}','App\Http\Controllers\servicios\serviciosController@edit');
+
+Route::get('listaservicios/{id}','App\Http\Controllers\servicios\serviciosController@update');
+
+
+Route::resource('listaservicios',serviciosController::class)->names('listaservicios')->middleware('auth');
+
+
+
 Route::resource('inventarios/consumibles',InventariosconsumibleController::class)->names('inventarios.consumibles')->middleware('auth');
 Route::resource('inventarios/rentas',InventariosRentasController::class)->names('inventarios.rentas')->middleware('auth');
-Route::resource('servicios/enfermeras',ServiciosController::class)->names('servicios.enfermeras')->middleware('auth');
 
-Route::get('servicios/servicios',[ServiciosController::class,'stats'])->name('servicios.enfermeras.stats')->middleware('auth');
+
+//Route::get('servicios/servicios',[ServiciosController::class,'stats'])->name('servicios.enfermeras.stats')->middleware('auth');
 Route::resource('proveedores',ProveedoresController::class)->names('proveedores')->middleware('auth');
 
 

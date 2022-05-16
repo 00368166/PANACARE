@@ -38,7 +38,7 @@
                 <a href="editenfermeras/{{$enfermeras->id}}" class="btn btn-sm bg-primary">
                     <i class="fas fa-pen"> Editar perfil</i>
                 </a>
-                <a href="deletefermera/{{$enfermeras->id}}" class="btn btn-sm bg-danger">
+                <a href="deleteenfermera/{{$enfermeras->id}}" class="btn btn-sm bg-danger">
                     <i class="fas fa-trash"> Eliminar</i>
                 </a>
                 <a href="tel:{{$enfermeras->telefono}}" class="btn btn-sm bg-teal">
