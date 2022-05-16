@@ -227,11 +227,12 @@ return [
 
     'menu' => [
         // Navbar items:
+        /*
         [
             'type'         => 'navbar-search',
             'text'         => 'search',
             'topnav_right' => true,
-        ],
+        ],*/
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
@@ -304,6 +305,27 @@ return [
                 ],
                 [
                     'text' => 'Inventarios Rentas',
+                    'icon'    => 'fas fa-fw fa-dolly',
+                    'route'  => 'inventarios.rentas.index',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Ordenes',
+            'icon'    => 'fas fa-fw fa-box',
+            'submenu' => [
+                [
+                    'text' => 'Servicio',
+                    'icon'    => 'fas fa-fw fa-coins',
+                    'route'  => 'inventarios.consumibles.index',
+                ],
+                [
+                    'text' => 'Renta',
+                    'icon'    => 'fas fa-fw fa-dolly',
+                    'route'  => 'inventarios.rentas.index',
+                ],
+                [
+                    'text' => 'Venta',
                     'icon'    => 'fas fa-fw fa-dolly',
                     'route'  => 'inventarios.rentas.index',
                 ],
@@ -395,7 +417,7 @@ return [
             'icon'        => 'fas fa-fw fa-database',
             'url'  => '#',
         ],
-        
+        /*
         ['header' => 'Configuración de Cuenta'],
         [
             'text' => 'profile',
@@ -409,7 +431,7 @@ return [
             'url'        => '#',
         ],
 
-      
+      */
     ],
 
     /*
