@@ -30,7 +30,7 @@ class clientesController extends Controller
      */
     public function create()
     {
-        //
+        return view('clientes.agregar');
     }
 
     /**
@@ -41,7 +41,16 @@ class clientesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $producto = new clientes;
+        $producto->nombre     = $request->get('nombre');
+        $producto->telefono = $request->get('telefono');
+        $producto->direccion  = $request->get('direccion');
+        $producto->relacion  = $request->get('relacion');
+        $producto->nacimiento  = $request->get('nacimiento');
+        $producto->necesidad  = $request->get('necesidad');
+    
+        $producto->save();
+        return redirect()->route('clientes.index')->withSuccess('toastr.success("s");');
     }
 
     /**
@@ -63,7 +72,8 @@ class clientesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $editable = clientes::where('id', $id)->get()->first();
+        return view('clientes.editar',compact('editable'));
     }
 
     /**
@@ -75,7 +85,11 @@ class clientesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        clientes::where('id', $id)->update($request->all());
+       // return $temp->all();
+//        $temp->update($request->all());
+ //       $num->save();
+        return redirect()->route('clientes.index')->withSuccess('toastr.success("s");');
     }
 
     /**
@@ -86,7 +100,8 @@ class clientesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::delete('delete from clientes where id = ?',[$id]);
+        return redirect()->route('clientes.index')->withSuccess('toastr.success("s");');
     }
 
     public function enfermeras_image(){

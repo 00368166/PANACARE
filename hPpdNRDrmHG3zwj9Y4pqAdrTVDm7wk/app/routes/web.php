@@ -37,8 +37,6 @@ Route::get('/', function () {
 });
 
 
-Auth::routes();
-
 Route::get('/admin', function () {
     return view('admin.admin');
 })->middleware('auth');
@@ -89,7 +87,7 @@ Route::resource('enfermeras',EnfermerasController::class)->names('enfermeras.ser
 
 Route::get('clientes/create','App\Http\Controllers\clientesController@create');
 Route::get('deleteclientes/{id}','App\Http\Controllers\clientesController@destroy');
-Route::get('editeclientes/{id}','App\Http\Controllers\clientesController@edit');
+Route::get('editclientes/{id}','App\Http\Controllers\clientesController@edit');
 
 Route::get('clientes/{id}','App\Http\Controllers\clientesController@update');
 

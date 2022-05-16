@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+
 <div class="card-header">
 
 <a href ="{{route('listaservicios.create')}}"  class="btn btn-block btn-primary btn-lg">

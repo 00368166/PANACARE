@@ -96,10 +96,6 @@ class InventariosconsumibleController extends Controller
  //       $num->save();
         return redirect()->route('inventarios.consumibles.index')->withSuccess('toastr.success("s");');
 
-
-//return $producto->all();
-    $producto->save();
-        return redirect()->route('inventarios.consumibles.index')->withSuccess('toastr.success("s");');
     }
 
     /**

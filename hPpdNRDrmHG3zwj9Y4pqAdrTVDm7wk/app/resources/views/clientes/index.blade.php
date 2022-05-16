@@ -8,7 +8,15 @@
 
 @section('content')
 <div class="card card-solid">
+<div class="card-footer">
+    <a href ="{{route('clientes.create')}}"  class="btn btn-block btn-primary btn-lg">
+
+<i class="fas fa-pen"> Crear nuevo</i>
+
+</a>
+</div>
       <div class="card-body pb-0">
+          
 <div class="row">
 @foreach($enf as $clientes)
 <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
@@ -37,7 +45,7 @@
                 <a href="editclientes/{{$clientes->id}}" class="btn btn-sm bg-primary">
                     <i class="fas fa-pen"> Editar perfil</i>
                 </a>
-                <a href="deleteenfermera/{{$clientes->id}}" class="btn btn-sm bg-danger">
+                <a href="deleteclientes/{{$clientes->id}}" class="btn btn-sm bg-danger">
                     <i class="fas fa-trash"> Eliminar</i>
                 </a>
                 <a href="tel:{{$clientes->telefono}}" class="btn btn-sm bg-teal">

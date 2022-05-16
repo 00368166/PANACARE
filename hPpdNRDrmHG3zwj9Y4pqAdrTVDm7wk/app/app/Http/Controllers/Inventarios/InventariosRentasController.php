@@ -17,7 +17,7 @@ class InventariosRentasController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function index()
     {
         $rentas= _inventariosrentas::all();
