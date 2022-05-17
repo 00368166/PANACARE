@@ -30,6 +30,7 @@ class CreateInventariosconsumiblesTable extends Migration
             
             $table->string('tipo_foto',255);
             $table->timestamps();
+            $table->foreign('proveedor_id')->references('id')->on('proveedor');
         });
     }
 

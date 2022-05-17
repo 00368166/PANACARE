@@ -16,6 +16,9 @@ use App\Http\Controllers\clientesController;
 
 use App\Http\Controllers\StatesController;
 
+use App\Http\Controllers\ordenservicioController;
+use App\Http\Controllers\ordenrentaController;
+use App\Http\Controllers\ordenventaController;
 
 
 use App\Http\Controllers\mensajesController;
@@ -99,6 +102,17 @@ Route::get('clientes/{id}','App\Http\Controllers\clientesController@update');
 Route::resource('clientes',clientesController::class)->names('clientes')->middleware('auth');
 
 Route::get('database',[databaseController::class,'index'])->name('database.index')->middleware('auth');
+
+//Route::post('ordenservicio/buscar','ordenservicioController@buscar');
+Route::post('ordenservicio/buscar/',[ordenservicioController::class,'buscar'])->name('ordenservicio.buscar')->middleware('auth');
+
+Route::post('ordenservicio/encontrar/',[ordenservicioController::class,'encontrar'])->name('ordenservicio.encontrar')->middleware('auth');
+
+
+
+Route::get('ordenservicio',[ordenservicioController::class,'index'])->name('ordenservicio.index')->middleware('auth');
+Route::get('ordenrenta',[ordenrentaController::class,'index'])->name('ordenrenta.index')->middleware('auth');
+Route::get('ordenventa',[ordenventaController::class,'index'])->name('ordenventa.index')->middleware('auth');
 
 
 Route::get('listaservicios/create','App\Http\Controllers\servicios\serviciosController@create');

@@ -317,17 +317,17 @@ return [
                 [
                     'text' => 'Servicio',
                     'icon'    => 'fas fa-fw fa-coins',
-                    'route'  => 'inventarios.consumibles.index',
+                    'route'  => 'ordenservicio.index',
                 ],
                 [
                     'text' => 'Renta',
                     'icon'    => 'fas fa-fw fa-dolly',
-                    'route'  => 'inventarios.rentas.index',
+                    'route'  => 'ordenrenta.index',
                 ],
                 [
                     'text' => 'Venta',
                     'icon'    => 'fas fa-fw fa-dolly',
-                    'route'  => 'inventarios.rentas.index',
+                    'route'  => 'ordenventa.index',
                 ],
             ],
         ],

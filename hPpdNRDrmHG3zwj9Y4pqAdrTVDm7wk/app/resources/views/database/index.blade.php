@@ -8,6 +8,11 @@
 <?php
 
 $enfermeras = DB::table('enfermeras')->get();
+
+$clientes = DB::table('clientes')->get();
+
+
+$proveedores = DB::table('proveedor')->get();
 ?>
 
 @section('content')
@@ -27,8 +32,6 @@ $enfermeras = DB::table('enfermeras')->get();
 </div>
 
 <div class="card-body">
-
-
 
 
 <table id="enfermeras" class="table table-striped" style="width:100%">
@@ -78,21 +81,120 @@ $enfermeras = DB::table('enfermeras')->get();
         </tfoot>
     </table>
 
-
-
-
-
+</div>
 
 </div>
 
-<div class="card-footer">
-Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-the plugin.
+<div class="card card-default">
+<div class="card-header">
+<h3 class="card-title">Descargar base clientes</h3>
+<div class="card-tools">
+<button type="button" class="btn btn-tool" data-card-widget="collapse">
+<i class="fas fa-minus"></i>
+</button>
+<button type="button" class="btn btn-tool" data-card-widget="remove">
+<i class="fas fa-times"></i>
+</button>
 </div>
 </div>
 
+<div class="card-body">
 
 
+<table id="clientes" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Direccion</th>
+                <th>Relacion</th>
+                <th>Nacimiento del paciente</th>
+                <th>Necesidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($clientes as $print)
+            <tr>
+                <td>{{$print->nombre}}</td>
+                <td>{{$print->telefono}}</td>
+                <td>{{$print->direccion}}</td>
+                <td>{{$print->relacion}}</td>
+                <td>{{$print->nacimiento}}</td>
+                <td>{{$print->necesidad}}</td>
+                
+            </tr>
+            
+            @endforeach
+        </tbody>
+        <tfoot>
+            <tr>
+            <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Direccion</th>
+                <th>Relacion</th>
+                <th>Nacimiento del paciente</th>
+                <th>Necesidad</th>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>
+
+</div>
+
+
+<div class="card card-default">
+<div class="card-header">
+<h3 class="card-title">Descargar base proveedores</h3>
+<div class="card-tools">
+<button type="button" class="btn btn-tool" data-card-widget="collapse">
+<i class="fas fa-minus"></i>
+</button>
+<button type="button" class="btn btn-tool" data-card-widget="remove">
+<i class="fas fa-times"></i>
+</button>
+</div>
+</div>
+
+<div class="card-body">
+
+
+<table id="proveedores" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Nombre Empresa</th>
+                <th>Descripcion</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($proveedores as $print)
+            <tr>
+                <td>{{$print->nombre}}</td>
+                <td>{{$print->nombre_empresa}}</td>
+                <td>{{$print->descripcion}}</td>
+                <td>{{$print->direccion}}</td>
+                <td>{{$print->telefono}}</td>
+            </tr>
+            
+            @endforeach
+        </tbody>
+        <tfoot>
+            <tr>
+            <th>Nombre</th>
+                <th>Nombre Empresa</th>
+                <th>Descripcion</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>
+
+</div>
 
 
 
@@ -109,6 +211,168 @@ the plugin.
     <script>
 $(document).ready( function () {
    var oTable = $('#enfermeras').dataTable({
+                "fixedHeader": true,
+                "colReorder": true,
+                "responsive": true,
+                "sPaginationType": "full_numbers",
+                "bLengthChange": true,
+                "aLengthMenu": [[5, 10, 15, 20, -1], [5, 10, 15, 20, , "All"]],
+                "iDisplayLength": 5,
+                "aaSorting": [1, 'asc'],
+                "dom": 'Blfrtip',
+                "bProcessing": true,
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print',
+                    {
+                        text: 'JSON',
+                        action: function (e, dt, button, config) {
+                            var data = dt.buttons.exportData();
+
+                            $.fn.dataTable.fileSave(
+                                new Blob([JSON.stringify(data)]),
+                                'Export.json'
+                            );
+                        }
+                    }
+                ],
+                //{ dom: 'Bfrtip', buttons: ['colvis', 'excel', 'print'] }
+                //  "bJQueryUI": true
+                // "sDom": 'l<"H"Rf>t<"F"ip>'
+            });
+   $(document).contextmenu({
+                delegate: ".dataTable td",
+                menu: [
+                    { title: "Filter", cmd: "filter", uiIcon: "ui-icon-volume-off ui-icon-filter" },
+                    { title: "Remove filter", cmd: "nofilter", uiIcon: "ui-icon-volume-off ui-icon-filter" },
+                    { title: "Cut", cmd: "Cut", uiIcon: "ui-icon-volume-off ui-icon-filter" },
+                    { title: "Pest", cmd: "Pest", uiIcon: "ui-icon-volume-off ui-icon-filter" },
+                    { title: "Exclude", cmd: "Exclude", uiIcon: "ui-icon-volume-off ui-icon-filter" }
+                ],
+                select: function (event, ui) {
+                    var coltext = ui.target.text().trim();
+                    var colvindex = ui.target.parent().children().index(ui.target);
+                    var colindex = $('table thead tr th:eq(' + colvindex + ')').data('column-index');
+                    switch (ui.cmd) {
+                        case "filter":
+                            oTable.fnFilter(coltext.trim(), colindex, true);
+                            break;
+                        case "nofilter":
+                            oTable.fnFilter('');
+                            break;
+                        case "Cut":
+
+                            alert('Column index 0 is ' +
+                                (employeeTable.column(0).visible() === true ? 'visible' : 'not visible')
+                            );
+                            break;
+                        case "Exclude":
+                            //
+                            oTable.fnSetColumnVis(columnIndex, false);
+                            //var oSettings = // you can find all sorts of goodies in the Settings
+                            // var col_id = oSettings.colindex;
+                            //alert('Clicked on cell in visible column: ' + col_id);
+                            // index = oTable.dataTable().api().cell($(e.target).closest('td')).index().column;
+                            // alert(index);
+                            //  oTable.fnSetColumnVis(colvindex, false);
+
+                            break;
+                    }
+                },
+                beforeOpen: function (event, ui) {
+                    var $menu = ui.menu,
+                        $target = ui.target,
+                        extraData = ui.extraData;
+                    ui.menu.zIndex(9999);
+                }
+            });
+} );
+
+
+</script>
+<script>
+$(document).ready( function () {
+   var oTable = $('#clientes').dataTable({
+                "fixedHeader": true,
+                "colReorder": true,
+                "responsive": true,
+                "sPaginationType": "full_numbers",
+                "bLengthChange": true,
+                "aLengthMenu": [[5, 10, 15, 20, -1], [5, 10, 15, 20, , "All"]],
+                "iDisplayLength": 5,
+                "aaSorting": [1, 'asc'],
+                "dom": 'Blfrtip',
+                "bProcessing": true,
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print',
+                    {
+                        text: 'JSON',
+                        action: function (e, dt, button, config) {
+                            var data = dt.buttons.exportData();
+
+                            $.fn.dataTable.fileSave(
+                                new Blob([JSON.stringify(data)]),
+                                'Export.json'
+                            );
+                        }
+                    }
+                ],
+                //{ dom: 'Bfrtip', buttons: ['colvis', 'excel', 'print'] }
+                //  "bJQueryUI": true
+                // "sDom": 'l<"H"Rf>t<"F"ip>'
+            });
+   $(document).contextmenu({
+                delegate: ".dataTable td",
+                menu: [
+                    { title: "Filter", cmd: "filter", uiIcon: "ui-icon-volume-off ui-icon-filter" },
+                    { title: "Remove filter", cmd: "nofilter", uiIcon: "ui-icon-volume-off ui-icon-filter" },
+                    { title: "Cut", cmd: "Cut", uiIcon: "ui-icon-volume-off ui-icon-filter" },
+                    { title: "Pest", cmd: "Pest", uiIcon: "ui-icon-volume-off ui-icon-filter" },
+                    { title: "Exclude", cmd: "Exclude", uiIcon: "ui-icon-volume-off ui-icon-filter" }
+                ],
+                select: function (event, ui) {
+                    var coltext = ui.target.text().trim();
+                    var colvindex = ui.target.parent().children().index(ui.target);
+                    var colindex = $('table thead tr th:eq(' + colvindex + ')').data('column-index');
+                    switch (ui.cmd) {
+                        case "filter":
+                            oTable.fnFilter(coltext.trim(), colindex, true);
+                            break;
+                        case "nofilter":
+                            oTable.fnFilter('');
+                            break;
+                        case "Cut":
+
+                            alert('Column index 0 is ' +
+                                (employeeTable.column(0).visible() === true ? 'visible' : 'not visible')
+                            );
+                            break;
+                        case "Exclude":
+                            //
+                            oTable.fnSetColumnVis(columnIndex, false);
+                            //var oSettings = // you can find all sorts of goodies in the Settings
+                            // var col_id = oSettings.colindex;
+                            //alert('Clicked on cell in visible column: ' + col_id);
+                            // index = oTable.dataTable().api().cell($(e.target).closest('td')).index().column;
+                            // alert(index);
+                            //  oTable.fnSetColumnVis(colvindex, false);
+
+                            break;
+                    }
+                },
+                beforeOpen: function (event, ui) {
+                    var $menu = ui.menu,
+                        $target = ui.target,
+                        extraData = ui.extraData;
+                    ui.menu.zIndex(9999);
+                }
+            });
+} );
+
+
+</script>
+<script>
+$(document).ready( function () {
+   var oTable = $('#proveedores').dataTable({
                 "fixedHeader": true,
                 "colReorder": true,
                 "responsive": true,
