@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Personas\EnfermerasController;
 
+
+
 use App\Http\Controllers\Inventarios\InventariosconsumibleController;
 
 use App\Http\Controllers\Inventarios\InventariosRentasController;
@@ -14,8 +16,10 @@ use App\Http\Controllers\clientesController;
 
 use App\Http\Controllers\StatesController;
 
-use App\Http\Controllers\mensajesController;
 
+
+use App\Http\Controllers\mensajesController;
+use App\Http\Controllers\databaseController;
 
 use App\Http\Controllers\CalendarController;
 //use App\Http\Controllers\Personas\EnfermerasController;
@@ -69,7 +73,7 @@ Route::get('editproveedores/{id}','App\Http\Controllers\Proveedores\ProveedoresC
 
 Route::get('proveedores/{id}','App\Http\Controllers\Proveedores\ProveedoresController@update');
 
-
+Auth::routes();
 
 
 Route::resource('mensajes',mensajesController::class)->names('mensajes')->middleware('auth');
@@ -94,7 +98,7 @@ Route::get('clientes/{id}','App\Http\Controllers\clientesController@update');
 
 Route::resource('clientes',clientesController::class)->names('clientes')->middleware('auth');
 
-
+Route::get('database',[databaseController::class,'index'])->name('database.index')->middleware('auth');
 
 
 Route::get('listaservicios/create','App\Http\Controllers\servicios\serviciosController@create');

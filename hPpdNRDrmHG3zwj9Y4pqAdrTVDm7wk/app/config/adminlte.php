@@ -394,28 +394,12 @@ return [
             'route'  => 'proveedores.index',
         ],
 
-        [
-            'text'    => 'Reportes',
-            'icon'    => 'fas fa-fw fa-box',
-            'submenu' => [
-                [
-                    'text' => 'Reportes A',
-                    'icon'    => 'fas fa-fw fa-coins',
-                    'url'  => '#',
-                ],
-                [
-                    'text' => 'Reportes B',
-                    'icon'    => 'fas fa-fw fa-dolly',
-                    'url'  => '#',
-                ],
-            ],
-        ],
 
         
         [
             'text' => 'Base de datos',
             'icon'        => 'fas fa-fw fa-database',
-            'url'  => '#',
+            'route'  => 'database.index',
         ],
         /*
         ['header' => 'Configuración de Cuenta'],

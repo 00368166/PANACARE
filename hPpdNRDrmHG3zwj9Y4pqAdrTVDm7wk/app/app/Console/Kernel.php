@@ -15,9 +15,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('db:dump')
+         ->dailyAt('09:30');
     }
 
+    protected $commands = [
+        \App\Console\Commands\DbDump::class
+      ];
     /**
      * Register the commands for the application.
      *
