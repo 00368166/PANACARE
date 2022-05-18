@@ -14,8 +14,16 @@ class CreateDetalleservicioTable extends Migration
     public function up()
     {
         Schema::create('detalleservicio', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->integer('num')->references('id')->on('ordenservicio')
+            ->onUpdate('cascade')
+      ->onDelete('cascade');
+            $table->date('iniciodia');
+            $table->date('terminadia');
+            $table->time('iniciohora');
+            $table->time('terminahora');
+            $table->integer('servicio')->references('id')->on('servicios')
+            ->onUpdate('cascade')
+      ->onDelete('cascade');
         });
     }
 

@@ -108,6 +108,12 @@ Route::post('ordenservicio/buscar/',[ordenservicioController::class,'buscar'])->
 
 Route::post('ordenservicio/encontrar/',[ordenservicioController::class,'encontrar'])->name('ordenservicio.encontrar')->middleware('auth');
 
+Route::post('ordenservicio/buscarservicio/',[ordenservicioController::class,'buscarservicio'])->name('ordenservicio.buscarservicio')->middleware('auth');
+
+Route::post('ordenservicio/tempservicio/',[ordenservicioController::class,'tempservicio'])->name('ordenservicio.tempservicio')->middleware('auth');
+
+Route::post('ordenservicio/encontrarservicio/',[ordenservicioController::class,'encontrarservicio'])->name('ordenservicio.encontrarservicio')->middleware('auth');
+
 
 
 Route::get('ordenservicio',[ordenservicioController::class,'index'])->name('ordenservicio.index')->middleware('auth');

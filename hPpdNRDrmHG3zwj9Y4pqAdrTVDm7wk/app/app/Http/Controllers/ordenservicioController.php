@@ -34,6 +34,7 @@ class ordenservicioController extends Controller
     return  $data;
     
 }
+
     /*
         if($request->ajax())
 {
@@ -57,5 +58,67 @@ class ordenservicioController extends Controller
     return "True request!"; 
 }*/
     }
+
+    public function buscarservicio(Request $request)
+    {
+    $id = $request->get('name');
+    if($id){
+
+    $data = DB::table('servicios')
+        ->select('servicios.*')   
+        ->where('nombre', 'like', '%' . $id . '%')
+        ->get();
+//    $list = DB::select('select * from clientes where nombre like ', '%'.$id.'%');
+    //clientes::where('name', 'like', '%'.$id.'%');
+   
+    return  $data;
+    
+}
+
+    /*
+        if($request->ajax())
+{
+    return "True request!"; 
+}*/
+    }
+
+    public function encontrarservicio(Request $request)
+    {
+    $id = $request->get('name');
+    if($id){
+
+    $data = DB::table('servicios')
+        ->select('servicios.*')   
+        ->where('nombre', '=', $id)
+        ->get();
+        return $data; 
+}
+    /*
+        if($request->ajax())
+{
+    return "True request!"; 
+}*/
+    }
+
+    public function tempservicio(Request $request)
+    {
+        
+        return $request; 
+    $id = $request->get('name');
+    if($id){
+
+    $data = DB::table('servicios')
+        ->select('servicios.*')   
+        ->where('nombre', '=', $id)
+        ->get();
+}
+    /*
+        if($request->ajax())
+{
+    return "True request!"; 
+}*/
+    }
+
+
 
 }

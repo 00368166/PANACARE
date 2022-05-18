@@ -15,7 +15,9 @@ class CreateOrdenservicioTable extends Migration
     {
         Schema::create('ordenservicio', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer('cliente')->references('id')->on('clientes')
+            ->onUpdate('cascade')
+      ->onDelete('cascade');
         });
     }
 
